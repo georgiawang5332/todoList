@@ -1,0 +1,61 @@
+<!--
+To-do List #4 Category - 待辦事項清單 #4 類別 -
+Learning vanilla JavaScript via mini-projects / 透過迷你專案學習普通 JavaScript
+●Category
+- getElementById/按 ID 取得元素
+- new row in table/表中的新行
+- classList.toggle()/類別列表.toggle()
+- datalist element = <datalist>/資料列表元素 = <資料列表>
+
+ -->
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<style>
+.strike {
+    text-decoration: line-through 4px;
+}
+td{
+    border: 1px solid rgb(64, 194, 107);
+    padding: 5px;
+}
+</style>
+<body>
+  <p>Link to video tutorial: <a href="https://youtu.be/bHqLCbJiUww">link</a></p>
+
+  <input type="text" placeholder="Enter new to-do">
+  <p><input type="text" placeholder="Enter category" list="categoryList"></p>
+
+  <datalist id="categoryList">
+    <option value="Personal"></option>
+    <option value="Work"></option>
+  </datalist>
+  <button id="addBtn">Add</button>
+  <ul></ul>
+  <table id="todoTable">
+    <tr>
+      <td>checkbox</td>
+      <td>to-do</td>
+      <td>category</td>
+      <td>delete</td>
+      <!-- <span class="material-symbols-outlined">delete</span> -->
+    </tr>
+  </table>
+
+  <p><a href="{% url 'dash:Dashboard' %}">返回首頁</a></p>
+
+  <!-- Javascript -->
+  <script src="{% static 'js/todo4.js' %}"></script>
+</body>
+</html>

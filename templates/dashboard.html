@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {{title}} {% endblock %}</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+  <div>
+    <h1>我是首頁 視窗</h1>
+
+    <a href="{% url 'dash:Dashboard' %}">首頁頁面</a>
+    <br>
+    <a href="{% url 'add:addingEntry' %}">1.增加頁面 |</a>
+    <a href="{% url 'del:delEntries' %}">2.刪除頁面 |</a>
+    <a href="{% url 'done:doneMarking' %}">3.Done頁面 |</a>
+    <a href="{% url 'cate:category' %}">4.類別頁面 |</a>
+    <a href="{% url 'FCategory:filterCategory' %}">5.按類別過濾頁面 |</a>
+    <a href="{% url 'auto:autoUO' %}">6.自動更新選項頁面 |</a>
+    <a href="{% url 'local:localStorage' %}">7.本地儲存頁面 |</a>
+    <a href="{% url 'obj:object' %}">8.目的頁面 |</a>
+    <a href="{% url 'identData:identifyingData' %}">9.識別數據頁面 |</a>
+    <a href="{% url 'uuid:uuidPage' %}">10.UUID |</a>
+    <a href="{% url 'dateInput:DateAndTimeInput' %}">11.日期和時間輸入 |</a>
+    <a href="{% url 'sort:Sorting' %}">12.排序 |</a>
+    <a href="{% url 'problemSolve:problemSolving' %}">13.解決問題 |</a>
+
+  </div>
+  <!-- Javascript -->
+  <script src="{% static 'js/dashboard.js' %}"></script>
+
+</body>
+</html>

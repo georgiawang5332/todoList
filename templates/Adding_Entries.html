@@ -1,0 +1,38 @@
+<!--
+  To-do List #1 Adding Entries -
+  Learning vanilla JavaScript via Mini-Projects
+  待辦事項清單 #1 新增條目 -
+  透過迷你專案學習普通 JavaScript
+  ●Adding Entries/新增條目
+- change Event Listener/更改事件監聽器
+- innerHTML +=/內部HTML +=
+- createElement and appendChild/建立元素和追加子元素
+ -->
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {{title}} {% endblock %}</title>
+</head>
+<body>
+  <p>video tutorial : <a href="https://youtu.be/1d90JmryqD4">link</a></p>
+  <!-- <form action="/test.aspx" method="post"> -->
+    <!-- 文字: <input type="text" name="text"> -->
+    <!-- <br> -->
+    <!-- <input type="submit" style="margin-top:10px;"> -->
+  <!-- </form> -->
+  <input type="text">
+  <ul></ul>
+
+  <p><a href="{% url 'dash:Dashboard' %}">返回首頁</a></p>
+  <script src="{% static 'js/todo1.js' %}"></script>
+  <script src="">
+    document.getElementsByTagName("input")[0].onchange = (event) => {
+        document.getElementsByTagName("ul")[0].innerHTML += `<li>${event.target.value}</li>`
+    }
+</script>
+</body>
+</html>

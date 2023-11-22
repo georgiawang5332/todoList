@@ -1,0 +1,83 @@
+<!--
+To-do List #11 Date and time input - Learning vanilla JavaScript via mini-projects
+待辦事項清單 #11 日期和時間輸入 - 透過迷你專案學習普通 JavaScript
+
+JS To-do List (Part 11) / JS 待辦事項清單（第 11 部分）
+Date and time input / 日期和時間輸入
+- input type="date" / - 輸入類型=“日期”
+- input type="time" / - 輸入類型=“時間”
+- new Date() constructor / - 新的 Date() 建構函數
+- dateObj.toLocaleString([locales[, options]]) / - dateObj.toLocaleString([語言環境[, 選項]])
+
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Document
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(64, 194, 107);
+            padding: 5px;
+        }
+        .strike {
+            text-decoration: line-through 4px;
+        }
+    </style>
+
+    <body>
+        <p>Link to video tutorial:<a href="https://youtu.be/bHqLCbJiUww">link</a></p>
+        <input type="text" placeholder="Enter new to-do">
+        <p><input type="text" placeholder="Enter category" list="categoryList"></p>
+        <datalist id="categoryList">
+            <option value="Personal"></option>
+            <option value="Work"></option>
+        </datalist>
+
+        <p><input type="date" id="dateInput"></p>
+        <p><input type="time" id="timeInput"></p>
+
+        <button id="addBtn">Add</button>
+        <ul></ul>
+        <table id="todoTable">
+            <tr>
+                <td>checkbox</td>
+                <td>日期</td>
+                <td>時間</td>
+                <td>to-do</td>
+                <td>
+                    <select id="categoryFilter">
+                        <option value=""></option>
+                        <option value="Personal">
+                            Personal
+                        </option>
+                        <option value="Work">
+                            Work
+                        </option>
+                    </select>
+                </td>
+                <td>刪除</td>
+                <!-- <span class="material-symbols-outlined">delete</span> -->
+            </tr>
+        </table>
+        <p>
+            <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
+        </p>
+        <!-- Javascript -->
+        <script src="{% static 'js/todo11.js' %}"></script>
+    </body>
+
+</html>

@@ -1,0 +1,75 @@
+<!--
+To-do List #8 Object - Learning vanilla JavaScript via mini-projects
+
+●Object: JS To-do List (Part 8)對象：JS待辦事項清單（第8部分）
+- object.key VS object["key"]/ 目的 鍵 ; 物件 鍵
+- for in loop/for 迴圈
+- array is object in JS/數組是JS中的對象
+- object destructuring/對象解構
+
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Document
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(64, 194, 107);
+            padding: 5px;
+        }
+        .strike {
+            text-decoration: line-through 4px;
+        }
+    </style>
+
+    <body>
+        <p>Link to video tutorial:<a href="https://youtu.be/bHqLCbJiUww">link</a></p>
+        <input type="text" placeholder="Enter new to-do">
+        <p><input type="text" placeholder="Enter category" list="categoryList"></p>
+        <datalist id="categoryList">
+            <option value="Personal"></option>
+            <option value="Work"></option>
+        </datalist>
+        <button id="addBtn">Add</button>
+        <ul></ul>
+        <table id="todoTable">
+            <tr>
+                <td>checkbox</td>
+                <td>to-do</td>
+                <td>
+                    <select id="categoryFilter">
+                        <option value=""></option>
+                        <option value="Personal">
+                            Personal
+                        </option>
+                        <option value="Work">
+                            Work
+                        </option>
+                    </select>
+                </td>
+                <td>delete</td>
+                <!-- <span class="material-symbols-outlined">delete</span> -->
+            </tr>
+        </table>
+        <p>
+            <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
+        </p>
+        <!-- Javascript -->
+        <script src="{% static 'js/todo8.js' %}"></script>
+    </body>
+
+</html>

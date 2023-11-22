@@ -1,0 +1,84 @@
+<!--
+To-do List #13 Problem Solving - Learning debugging with DevTool and console.log
+待辦事項清單 #13 解決問題 - 學習使用 DevTool 和 console.log 進行調試
+JS To-do List (Part 13) Problem Solving/JS 待辦事項清單（第 13 部分）問題解決
+
+A- Thanks Conrad Mollink for pointing out / 感謝康拉德·莫林克的指出
+B- shifted columns / 移動列
+C- - td[4] instead of td[2] / td[4] 而非 td[2]
+D- - querySelector(class) / 查詢選擇器（類別）
+E- - looping over data / 循環數據
+F- referenced node lost / 引用節點遺失
+G- - keep the first row / 保留第一行
+H- - get element again / 再次取得元素
+解決問題
+1.選擇項目會抓取到時間，當初定位在[選擇選項]上面，但是多加兩個時間後就抓錯對象了。關於 updateSelectOptions(需要) filterEntries(不需要)(C)
+2.
+3.
+4.
+5.
+
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Document
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(64, 194, 107);
+            padding: 5px;
+        }
+        .strike {
+            text-decoration: line-through 4px;
+        }
+    </style>
+
+    <body>
+        <p>Link to video tutorial:<a href="https://youtu.be/bHqLCbJiUww">link</a></p>
+        <input type="text" placeholder="Enter new to-do">
+        <p><input type="text" placeholder="Enter category" list="categoryList"></p>
+        <datalist id="categoryList">
+            <option value="Personal">123456789</option>
+            <option value="Work"></option>
+        </datalist>
+
+        <p><input type="date" id="dateInput"></p>
+        <p><input type="time" id="timeInput"></p>
+        <button id="addBtn">Add</button>
+        <p><button id="sortBtn">Sort</button></p>
+        <ul></ul>
+        <table id="todoTable">
+            <tr>
+                <td>checkbox</td>
+                <td>日期</td>
+                <td>時間</td>
+                <td>to-do</td>
+                <td>
+                    <select id="categoryFilter"></select>
+                </td>
+                <td>刪除</td>
+                <!-- <span class="material-symbols-outlined">delete</span> -->
+            </tr>
+        </table>
+        <p>
+            <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
+        </p>
+        <!-- Javascript -->
+        <script src="{% static 'js/todo13.js' %}"></script>
+    </body>
+
+</html>

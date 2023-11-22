@@ -1,0 +1,82 @@
+<!--
+To-do List #12 Sorting - Learning vanilla JavaScript via mini-projects
+待辦事項清單 #12 排序 - 透過迷你專案學習普通 JavaScript
+JS To-do List (Part 12) / JS 待辦事項清單（第 12 部分）
+
+Sorting / 排序
+- Array sort() - 陣列排序()
+- Array sort(callback) - 陣列排序（回呼）
+- Date.parse() - 日期。 解析（）
+- UX design - autosave? - 使用者體驗設計 - 自動儲存？
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Document
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(64, 194, 107);
+            padding: 5px;
+        }
+        .strike {
+            text-decoration: line-through 4px;
+        }
+    </style>
+
+    <body>
+        <p>Link to video tutorial:<a href="https://youtu.be/bHqLCbJiUww">link</a></p>
+        <input type="text" placeholder="Enter new to-do">
+        <p><input type="text" placeholder="Enter category" list="categoryList"></p>
+        <datalist id="categoryList">
+<!--            <option value="Personal"></option>-->
+<!--            <option value="Work"></option>-->
+        </datalist>
+
+        <p><input type="date" id="dateInput"></p>
+        <p><input type="time" id="timeInput"></p>
+        <button id="addBtn">Add</button>
+        <p><button id="sortBtn">Sort</button></p>
+        <ul></ul>
+        <table id="todoTable">
+            <tr>
+                <td>checkbox</td>
+                <td>日期</td>
+                <td>時間</td>
+                <td>to-do</td>
+                <td>
+                    <select id="categoryFilter">
+<!--                        <option value=""></option>-->
+<!--                        <option value="Personal">-->
+<!--                            Personal-->
+<!--                        </option>-->
+<!--                        <option value="Work">-->
+<!--                            Work-->
+<!--                        </option>-->
+                    </select>
+                </td>
+                <td>刪除</td>
+                <!-- <span class="material-symbols-outlined">delete</span> -->
+            </tr>
+        </table>
+        <p>
+            <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
+        </p>
+        <!-- Javascript -->
+        <script src="{% static 'js/todo12.js' %}"></script>
+    </body>
+
+</html>

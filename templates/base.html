@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh">
+<head>
+    {% include '_includes/link.html' %}
+    <title>
+        {% block title %}{% endblock %}| 婚禮小助手
+    </title>
+</head>
+
+<body>
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <!-- Nav Start -->
+    <!-- {% block nav %}
+        {% include '_includes/nav.html' %}
+    {% endblock %} -->
+    <!-- Nav End -->
+
+    <!-- sidebar-wrapper  -->
+
+    <!-- Content Start -->
+    {% block content %} {% endblock content %}
+    <!-- Content End -->
+
+    <!-- Main page-content -->
+</div>
+<!-- page-wrapper -->
+
+
+<!-- Javascript -->
+{% include '_includes/script.html' %}
+</body>
+</html>

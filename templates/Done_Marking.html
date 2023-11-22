@@ -1,0 +1,55 @@
+<!--
+To-do List #3 Done Marking -
+Learning CSS and JavaScript via mini-projects
+●Done Marking
+
+- CSS property
+- - text-decoration: line-through;/文字裝飾：穿梭；
+
+- JS technique: flag /JS技術：標誌
+
+- JS classList API: add() and remove()/JS classList API：add（）和remove（）
+
+- HTML checkbox: input type="checkbox"/HTML 複選框：輸入類型=“複選框”
+
+- CSS pseudo-class- :checked/CSS 偽類- :checked
+
+- CSS selectors:        / CSS 選擇器：
+- - ~ preceding         / ~ 前面
+- - + immediate sibling / + 直系兄弟姊妹
+
+ -->
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Document
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+  </head>
+  <style>
+  input:checked + span {
+    text-decoration: line-through 3px;
+  }
+  </style>
+  <body>
+    <p>
+      link to video tutorial:
+      <a href="https://youtu.be/KtT1j0TC_3o">
+        link
+      </a>
+    </p>
+    <input type="text">
+    <ul></ul>
+    <p><a href="{% url 'dash:Dashboard' %}">返回首頁</a></p>
+
+    <script src="{% static 'js/todo3.js' %}"></script>
+  </body>
+
+</html>

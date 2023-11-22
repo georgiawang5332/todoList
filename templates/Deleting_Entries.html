@@ -1,0 +1,30 @@
+<!-- 
+To-do List #2 Deleting Entries - 
+Learning vanilla JavaScript via Mini-Projects
+●Deleting Entries
+- dblclick event/雙擊事件
+- remove()/消除（）
+- Material Icons/材質圖標
+- className/班級名稱
+- Closures/關閉
+ -->
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {{title}} {% endblock %}</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <p>Link to video tutorial: <a href="https://youtu.be/NrE6675CjhA">link</a></p>
+  <input type="text">
+  <ul></ul>
+  <p><a href="{% url 'dash:Dashboard' %}">返回首頁</a></p>
+
+  <script src="{% static 'js/todo2.js' %}"></script>
+
+</body>
+</html>

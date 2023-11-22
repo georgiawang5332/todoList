@@ -1,0 +1,71 @@
+<!--
+To-do List #5 Filter by category -
+Learning JavaScript via mini-projects
+待辦事項清單 #5 按類別篩選 -
+透過迷你專案學習 JavaScript
+
+●Filter by category / ●按類別過濾
+- select element<select> / - 選擇元素<選擇>
+- Element.style.display / 元素.樣式.顯示
+- ES6 Array.from() / ES6 數組.從()
+- ES6 Array.prototype.forEach() /ES6 數組.原型.對於每個 ()
+
+ -->
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {{title}} {% endblock %}</title>
+  </head>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid rgb(64, 194, 107);
+      padding: 5px;
+    }
+    .strike {
+      text-decoration: line-through 4px;
+    }
+  </style>
+  <body>
+    <p>video tutorial : <a href="https://youtu.be/1d90JmryqD4">link</a></p>
+    <input type="text" placeholder="Enter new to-do" />
+    <p>
+      <input
+        type="text"
+        placeholder="Enter category/輸入類別"
+        list="categoryList"
+      />
+    </p>
+    <datalist id="categoryList">
+      <option value="Personal"></option>
+      <option value="Work"></option>
+    </datalist>
+    <button id="addBtn">Add</button>
+    <ul></ul>
+    <div class="wrap">
+      <table id="todoTable" cellpadding="10">
+        <tr>
+          <td>checkbox</td>
+          <td>to-do</td>
+          <td>
+            <select id="categoryFilter">
+              <option value=""></option>
+              <option value="Personal">Personal</option>
+              <option value="Work">Work</option>
+            </select>
+          </td>
+          <td>delete</td>
+        </tr>
+      </table>
+    </div>
+
+    <ul></ul>
+    <p><a href="{% url 'dash:Dashboard' %}">返回首頁</a></p>
+    <script src="{% static 'js/todo5.js' %}"></script>
+  </body>
+</html>
