@@ -1,0 +1,90 @@
+<!--
+JS To-do List #14 FullCalendar - Rendering a Calendar with JavaScript
+JS 待辦事項清單 #14 FullCalendar - 使用 JavaScript 渲染日曆 / JS 待辦事項清單（第 14 部分）FullCalendar
+JS To-do List (Part 14) FullCalendar / JS 待辦事項清單（第 14 部分）FullCalendar
+
+Official Website of FullCalendar: / FullCalendar官方網站：https://fullcalendar.io/
+
+Learning Objectives: / 學習目標：
+- Array method map()     - 陣列方法map()
+- Calendar::addEvent     - 日曆::addEvent
+- Event::remove          - 事件::刪除
+- Calendar::getEvents    - 日曆::getEvents
+- Calendar::getEventById - 日曆::getEventById
+
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Document-14
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet" />
+        <!-- 新日歷、日期套件 css -->
+        <link href="{% static 'calender/main.css' %}" rel="stylesheet" />
+
+    </head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(64, 194, 107);
+            padding: 5px;
+        }
+        .strike {
+            text-decoration: line-through 4px;
+        }
+    </style>
+
+    <body>
+        <!-- 新日歷、日期套件 -->
+        <div id='calendar'></div>
+
+
+
+        <p>Link to video tutorial:<a href="https://youtu.be/bHqLCbJiUww">link</a></p>
+        <input type="text" placeholder="Enter new to-do">
+        <p><input type="text" placeholder="Enter category" list="categoryList"></p>
+        <datalist id="categoryList">
+            <option value="Personal">123456789</option>
+            <option value="Work"></option>
+        </datalist>
+
+        <p><input type="date" id="dateInput"></p>
+        <p><input type="time" id="timeInput"></p>
+        <button id="addBtn">Add</button>
+        <p><button id="sortBtn">Sort</button></p>
+        <ul></ul>
+        <table id="todoTable">
+            <tr>
+                <td>checkbox</td>
+                <td>日期</td>
+                <td>時間</td>
+                <td>to-do</td>
+                <td>
+                    <select id="categoryFilter"></select>
+                </td>
+                <td>刪除</td>
+                <!-- <span class="material-symbols-outlined">delete</span> -->
+            </tr>
+        </table>
+        <p>
+            <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
+        </p>
+
+        
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <!-- 新日歷、日期套件 js -->
+        <script src="{% static 'calender/dist/index.global.js' %}"></script>
+        <script src="{% static 'js/todo14.js' %}"></script>
+
+    </body>
+
+</html>

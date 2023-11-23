@@ -168,7 +168,7 @@ function todoMain(){
             year: "numeric",
         });
 
-//        console.log(formattedDate);
+    //    console.log(formattedDate);
         dateElem.innerText = date;
         trElem.appendChild(dateElem);
 //        console.log(dateObj.toLocaleString("zh-TW"));("en-US"));("en-GB"));
@@ -283,5 +283,6 @@ function todoMain(){
 
         renderRows();    
     }
+
 
 }

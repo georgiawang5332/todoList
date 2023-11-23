@@ -33,6 +33,7 @@ urlpatterns = [
     path('Date_And_Time_Input/', include('Date_And_Time_Input.urls')),
     path('Sorting/', include('Sorting.urls')),
     path('Problem_Solving/', include('Problem_Solving.urls')),
+    path('FullCalendar/', include('FullCalendar.urls')),
 
     path('admin/', admin.site.urls),
 ]

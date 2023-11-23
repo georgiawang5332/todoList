@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'Date_And_Time_Input',
     'Sorting',
     'Problem_Solving',
+    'FullCalendar',
 ]
 
 MIDDLEWARE = [
