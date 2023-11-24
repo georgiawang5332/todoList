@@ -11,11 +11,11 @@ function todoMain(){
         ulElem,
         selectElem,
         todoList = [];
-        calendar;
+        // calendar;
 
     getElements();
     addListeners();
-    initCalendar();
+    // initCalendar();
     load();
     renderRows();
     rendowRow();
@@ -73,7 +73,7 @@ function todoMain(){
             trElems[i].remove();
         }
 
-        calendar.getEvents().forEach(event=>event.remove());
+        // calendar.getEvents().forEach(event=>event.remove());
 
         if(selection == DEFAULT_OPTION){
             todoList.forEach( obj => rendowRow(obj) );
@@ -220,11 +220,11 @@ function todoMain(){
         }
 
         //新增事件
-        addEvent({
-            id: id,
-            title: inputValue,
-            date: date,
-        });
+        // addEvent({
+        //     id: id,
+        //     title: inputValue,
+        //     date: date,
+        // });
 
         function deleteItem(){
             trElem.remove();
@@ -237,7 +237,7 @@ function todoMain(){
             }
             save();
             //enent.from calendar: Calendar::getEventById - 日曆::getEventById
-            calendar.getEventById(this.dataset.id).remove();
+            // calendar.getEventById(this.dataset.id).remove();
             
         }
 
@@ -281,24 +281,24 @@ function todoMain(){
         renderRows();    
     }
 
-    function initCalendar(){
-        var calendarEl = document.getElementById('calendar');
+    // function initCalendar(){
+    //     var calendarEl = document.getElementById('calendar');
 
-        calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            initialDate: '2023-11-07',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            events: [],
-        });
-        calendar.render();
-    }
+    //     calendar = new FullCalendar.Calendar(calendarEl, {
+    //         initialView: 'dayGridMonth',
+    //         initialDate: '2023-11-07',
+    //         headerToolbar: {
+    //             left: 'prev,next today',
+    //             center: 'title',
+    //             right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    //         },
+    //         events: [],
+    //     });
+    //     calendar.render();
+    // }
 
-    // Calendar::addEvent
-    function addEvent(event){
-        calendar.addEvent(event);
-    }
+    //Calendar::addEvent
+    // function addEvent(event){
+    //     calendar.addEvent(event);
+    // }
 }
