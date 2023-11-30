@@ -76,9 +76,13 @@ function todoMain() {
         updateSelectOptions();
     
         // 清空輸入欄位值
+        // let inputValue = inputElem.value;
         inputElem.value = "";
+        // let inputValue2 = inputElem2.value;
         inputElem2.value = "";
+        // let dateValue = dateInput.value;
         dateInput.value = "";
+        // let timeValue = timeInput.value;
         timeInput.value = "";
     }
     
