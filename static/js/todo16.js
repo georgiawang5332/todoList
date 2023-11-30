@@ -85,6 +85,11 @@ function todoMain() {
         // let timeValue = timeInput.value;
         timeInput.value = "";
     }
+
+    /*註解:
+            當 To-Do 欄位沒有填寫內容時，會彈出一個警告視窗，並且不會執行新增的動作。
+            這樣就能夠避免在沒有填寫必要內容的情況下添加多餘的空白欄位。
+    */
     
     // function addEntry(event) { //add新增Entry條目
     //     let inputValue = inputElem.value;
