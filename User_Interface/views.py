@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-def FullCalendarView(request):
+def UserInterfaceView(request):
     templates_name = "User_Interface.html"
     context = {
         'title':'User Interfaceeeeeeeeeeeeeeeeeeeeee',

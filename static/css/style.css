@@ -1,4 +1,93 @@
-  /* input:checked + span {
-    text-decoration: line-through 7px;
+* {
+  /* outline: 1px solid red; */
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+td {
+  border: 1px solid white;
+  /* padding: 9.5px; */
+}
+
+#todoTable {
+  width: 100%;
+  /* margin-top: 1rem; */
+}
+
+::-ms-input-placeholder{
+  color: #b8b736 ;
+}
+
+::-webkit-input-placeholder{
+  color: #b8b736 ;
+}
+
+::placeholder{
+  color: #b8b736 ;
+}
+
+/* input:-ms-input-placeholder,
+input:-webkit-input-placeholder,
+input:placeholder, */
+input {
+  color: rgb(85, 190, 190);
+}
+
+h3 {
+  background-color: #9ea923;
+  color: rgb(88, 217, 217);
+  /* padding: 1rem; */
+}
+
+/* 對於邊框設定 走向 */
+.todo-input {
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr; */
+  /* row-gap: 1rem; */
+}
+
+.todo-block {
+  border: 5px solid #F7D488;
+  padding: 1rem;
+  border-radius: 20px;
+  color: #F9A03F;
+}
+
+.pl {
+  padding-left: 0;
+}
+
+/* CSS｜Media Query : https://hackmd.io/@A-Min-Design/rkZw8iSLt */
+@media (max-width: 319.99px) { 
+
+ }
+
+@media screen and (min-width: 320px) and (max-width: 767.99px) {
+  .pt{
+    padding: 1rem;
   }
- */
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.99px) {
+  .pt{
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.99px) { 
+  .pt{
+    padding: 0;
+  }
+ }
+
+@media (min-width: 1200px) { 
+  
+ }

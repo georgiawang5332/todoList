@@ -34,6 +34,10 @@ urlpatterns = [
     path('Sorting/', include('Sorting.urls')),
     path('Problem_Solving/', include('Problem_Solving.urls')),
     path('FullCalendar/', include('FullCalendar.urls')),
+    path('User_Interface/', include('User_Interface.urls')),
+    path('Shortlisting_Undone/', include('Shortlisting_Undone.urls')),
+
+
 
     path('admin/', admin.site.urls),
 ]

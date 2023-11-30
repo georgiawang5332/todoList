@@ -28,6 +28,8 @@ Learning Objectives: / 學習目標：
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         rel="stylesheet" />
+        <!-- 新日歷、日期套件 css -->
+        <link href="{% static 'calender/main.css' %}" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <style>
@@ -72,8 +74,16 @@ Learning Objectives: / 學習目標：
         <p>
             <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
         </p>
+
+        <!-- 新日歷、日期套件 -->
+        <div id='calendar'></div>
+
+        <!-- 新日歷、日期套件 js -->
+        <script src="{% static 'calender/dist/index.global.js' %}"></script>
         <!-- Javascript -->
         <script src="{% static 'js/todo14.js' %}"></script>
     </body>
 
 </html>
+
+<!-- https://jsfiddle.net/tf26v81b/ 先前錯誤的程式代碼，可以拿來理解錯誤在哪 -->

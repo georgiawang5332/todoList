@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'Sorting',
     'Problem_Solving',
     'FullCalendar',
+    'User_Interface',
+    'Shortlisting_Undone',
 ]
 
 MIDDLEWARE = [

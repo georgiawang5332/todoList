@@ -1,0 +1,123 @@
+<!--
+CSS To-do List #15 User Interface - Learning Responsive Web Design via Mini-Projects
+CSS 待辦事項清單 #15 使用者介面 - 透過迷你專案學習響應式網頁設計
+CSS To-do List (Part 15) User Interface / CSS 待辦事項清單（第 15 部分）使用者介面
+
+Learning Objectives / 學習目標
+
+- Grid System / 網格系統
+
+- Media query / 媒體查詢
+- - Media Queries for Standard Devices - CSS Tricks / - - 標準設備的媒體查詢 - CSS 技巧
+- - https://css-tricks.com/snippets/css/m...
+
+- Sticky Positioning / - 黏性定位
+
+- Color Palette / - 調色板
+- - Coolors - The super fast color schemes generator!  /  - - Coolors - 超快的配色方案產生器！
+- - https://coolors.co/
+- - 
+- - HTML Color Picker - W3Schools / HTML 顏色選擇器 - W3Schools
+- - https://www.w3schools.com/colors/colors_picker.asp
+
+- Google Fonts
+- - https://fonts.google.com/
+
+
+Remarks: Sorry about formatting the placeholder and input textbox, if anyone wants to know to how format them, please let me know in the comment.
+備註：很抱歉格式化佔位符和輸入文字框，如果有人想知道如何格式化它們，請在評論中告訴我。
+-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Document
+        </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet" />
+        
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+        <!-- 連結full calender新日歷、日期套件 css -->
+        <link href="{% static 'calender/main.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    </head>
+    <style>
+        /* table,
+        th,
+        td {
+            border: 1px solid rgb(64, 194, 107);
+            padding: 5px;
+        }
+        .strike {
+            text-decoration: line-through 4px;
+        } */
+    </style>
+
+    <body>
+        <h3>Georgia's To-Do List</h3>
+        <div class="todo-grid-parent">
+            <!-- <p>Link to video tutorial:<a href="https://youtu.be/bHqLCbJiUww">link</a></p> -->
+            <div>
+                <div class="todo-input todo-block">
+                    <span>To-Do: </span>
+                    <input type="text" placeholder="Enter new to-do">
+                    <span>Category: </span>
+                    <input type="text" placeholder="Enter category" list="categoryList">
+                    <datalist id="categoryList">
+                        <option value="Personal">123456789</option>
+                        <option value="Work"></option>
+                    </datalist>
+                    <span>Date: </span>
+                    <input type="date" id="dateInput">
+                    <span>Time: </span>
+                    <input type="time" id="timeInput">
+                    <span></span>
+                    <button id="addBtn">Add</button>
+                    <span></span>
+                    <button id="sortBtn">Sort</button>
+                </div>
+                <table id="todoTable" class="todo-block">
+                    <tr>
+                        <td>checkbox</td>
+                        <td>日期</td>
+                        <td>時間</td>
+                        <td>to-do</td>
+                        <td>
+                            <select id="categoryFilter"></select>
+                        </td>
+                        <td>刪除</td>
+                        <!-- <span class="material-symbols-outlined">delete</span> -->
+                    </tr>
+                </table>
+            </div>
+            <div class="todo-calendar todo-block">
+                <!-- 新日歷、日期套件 -->
+                <div id='calendar'></div>
+            </div>
+            
+            <!-- <p>
+                <a href="{% url 'dash:Dashboard' %}">返回首頁</a>
+            </p> -->
+        </div>
+        
+
+        <!-- 傳換成中文套件 -->
+        <script src="calender/locales-all.js"></script>
+        <!-- 新日歷、日期套件 js -->
+        <script src="{% static 'calender/dist/index.global.js' %}"></script>
+        <!-- Javascript -->
+        <script src="{% static 'js/todo15.js' %}"></script>
+    </body>
+
+</html>
