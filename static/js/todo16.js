@@ -48,31 +48,65 @@ function todoMain() {
 
     }
 
-    function addEntry(event) { //add新增Entry條目
-        let inputValue = inputElem.value;
-        inputElem.value = "";
-        let inputValue2 = inputElem2.value;
-        inputElem2.value = "";
-        //11
-        let dateValue = dateInput.value;
-        dateInput.value = "";
-        let timeValue = timeInput.value;
-        timeInput.value = "";
-        /////////////////取走放入 renderRow(); 函數//////////////////////
+    function addEntry(event) {
+        // 檢查是否有填寫 To-Do 欄位
+        let inputValue = inputElem.value.trim();
+        if (!inputValue) {
+            alert("新增前請輸入待辦事項。");
+            return;
+        }
+    
+        // 取得其他欄位的值
+        let inputValue2 = inputElem2.value.trim();
+        let dateValue = dateInput.value.trim();
+        let timeValue = timeInput.value.trim();
+    
+        // 只有在 To-Do 欄位有值的情況下才執行新增
         let obj = {
-            id: _uuid(),//入口函數
+            id: _uuid(),
             todo: inputValue,
             category: inputValue2,
-            //11
             date: dateValue,
             time: timeValue,
             done: false,
         };
         renderRow(obj);
-        todoList.push(obj); //0:{todo: "E todo", category: "E todo"}
+        todoList.push(obj);
         save();
         updateSelectOptions();
+    
+        // 清空輸入欄位值
+        inputElem.value = "";
+        inputElem2.value = "";
+        dateInput.value = "";
+        timeInput.value = "";
     }
+    
+    // function addEntry(event) { //add新增Entry條目
+    //     let inputValue = inputElem.value;
+    //     inputElem.value = "";
+    //     let inputValue2 = inputElem2.value;
+    //     inputElem2.value = "";
+    //     //11
+    //     let dateValue = dateInput.value;
+    //     dateInput.value = "";
+    //     let timeValue = timeInput.value;
+    //     timeInput.value = "";
+    //     /////////////////取走放入 renderRow(); 函數//////////////////////
+    //     let obj = {
+    //         id: _uuid(),//入口函數
+    //         todo: inputValue,
+    //         category: inputValue2,
+    //         //11
+    //         date: dateValue,
+    //         time: timeValue,
+    //         done: false,
+    //     };
+    //     renderRow(obj);
+    //     todoList.push(obj); //0:{todo: "E todo", category: "E todo"}
+    //     save();
+    //     updateSelectOptions();
+    // }
 
     function filterEntries() {
         let selection = selectElem.value;
