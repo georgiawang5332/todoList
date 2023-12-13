@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'FullCalendar',
     'User_Interface',
     'Shortlisting_Undone',
+    'Edit_Entries',
+    'FullCalendar_eventClick',
+    'Drag_to_Reorder',
 ]
 
 MIDDLEWARE = [

@@ -1,21 +1,17 @@
 <!--
-JS To-do List #16 Shortlisting undone - Learning CSS and vanilla JavaScript via Mini-Projects
-JS 待辦事項清單 #16 未完成的候選名單 - 透過迷你專案學習 CSS 和普通 JavaScript
-JS To-do List (Part 16) Shortlisting undone / JS 待辦事項清單（第 16 部分） 未完成入圍
-
-Learning Objectives and Timestamps: / 學習目標和時間戳：
-- ::placeholder                     - ::佔位符
-- vendor prefix                     - 供應商前綴
-- Loading library locally           - 本機載入庫
-- ./ (root path)                    - ./（根路徑）
-- Array filter()                    - 數組過濾器()
-- renderRows(arr) VS renderRows()   - renderRows(arr) VS renderRows()  
-- Multiple Filtering                - 多重過濾
+To-do List #17 Edit Entries - Learning vanilla JavaScript via Mini-Projects
+待辦事項清單 #17 編輯條目 - 透過迷你專案學習普通 JavaScript
+JS To-do List (Part 17) Edit Entries    /     JS 待辦事項清單（第 17 部分）編輯條目
+Learning Objectives: 
+- Edit in the cell     - 在儲存格中編輯
+- - Event Delegation   - 活動代表團
+- Edit in a form       - 以表格形式編輯
+- - Modal Box          - 模態框
 -->
 
 <!doctype html>
 {% load static %}
-<html lang="en">
+<html lang="zh">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -39,7 +35,7 @@ Learning Objectives and Timestamps: / 學習目標和時間戳：
   </style>
   <body>
     <h3>Georgia's To-Do List</h3>
-    <div class="container-fluid">
+    <div class="container-fluid todo-grid-parent">
         <div class="row flex-column flex-lg-row">
             <div class="col">
                 <div class="todo-input todo-block">
@@ -78,6 +74,7 @@ Learning Objectives and Timestamps: / 學習目標和時間戳：
                             <td>
                                 <select id="categoryFilter"></select>
                             </td>
+                            <td>編輯</td>
                             <td>刪除</td>
                             <!-- <span class="material-symbols-outlined">delete</span> -->
                         </tr>
@@ -92,8 +89,30 @@ Learning Objectives and Timestamps: / 學習目標和時間戳：
                 </div>
             </div>
         </div>
+    </div> <!--todo-grid-parent-->
 
-    </div>
+    <div id="todo-overlay" class="todo-overlay slidedIntoView">
+        <div id="todo-modal" class="todo-modal">
+            <div class="todo-input todo-block">
+                <span>To-Do: </span>
+                <input id="todo-edit-todo" type="text" placeholder="Enter new to-do">
+                <span>Category: </span>
+                <input id="todo-edit-category" type="text" placeholder="Enter category" list="categoryList">
+                <datalist id="categoryList">
+                    <option value="Personal">123456789</option>
+                    <option value="Work"></option>
+                </datalist>
+                <span>Date: </span>
+                <input type="date" id="todo-edit-date"><!--dateInput-->
+                <span>Time: </span>
+                <input type="time" id="todo-edit-time"><!--timeInput-->
+                <span></span>
+                <button id="changeBtn">Save Change</button>
+            </div>
+        </div>
+        <div id="todo-modal-close-btn" class="todo-modal-close-btn">X</div>
+    </div><!--todo-overlay-->
+
   </body>
 </html>
 
@@ -115,4 +134,4 @@ Learning Objectives and Timestamps: / 學習目標和時間戳：
 <script src="{% static 'calender/main.min.js' %}" defer></script>
 
 <!-- 本地端 Javascript -->
-<script src="{% static 'js/todo16.js' %}" defer></script>
+<script src="{% static 'js/todo17.js' %}" defer></script>

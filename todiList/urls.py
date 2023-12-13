@@ -36,9 +36,13 @@ urlpatterns = [
     path('FullCalendar/', include('FullCalendar.urls')),
     path('User_Interface/', include('User_Interface.urls')),
     path('Shortlisting_Undone/', include('Shortlisting_Undone.urls')),
+    path('Edit_Entries/', include('Edit_Entries.urls')),
+    path('FullCalendar_eventClick/', include('FullCalendar_eventClick.urls')),
+    path('Drag_to_Reorder/', include('Drag_to_Reorder.urls')),
 
 
 
+    
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:  # add this
