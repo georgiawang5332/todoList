@@ -1,3 +1,4 @@
+// onload = todoMain;
 todoMain()
 
 function todoMain() {
@@ -8,9 +9,8 @@ function todoMain() {
         timeInput,
         addButton,
         sortButton,
-
         selectElem,
-        todoList = [],
+        todoList = [];
         calendar,
         shortlistBtn,
         changeBtn,
@@ -31,14 +31,14 @@ function todoMain() {
         timeInput = document.getElementById("timeInput");
         addButton = document.getElementById("addBtn");
         sortButton = document.getElementById("sortBtn");
-        ulElem = document.getElementsByTagName("ul")[0];
+        // ulElem = document.getElementsByTagName("ul")[0];
         selectElem = document.getElementById("categoryFilter");
         shortlistBtn = document.getElementById("shortlistBtn");
         // console.log(shortlistBtn);
 
-        // changeBtn.addEventListener("click", commitEdit, false);
         changeBtn = document.getElementById("changeBtn"); 
         todoTable = document.getElementById("todoTable");
+
     }
 
     function addListeners() {
@@ -130,6 +130,7 @@ function todoMain() {
     }
 
     function save() {
+        // todo7.js:127 Uncaught TypeError: todoList.forEach is not a function
         let stringified = JSON.stringify(todoList) //添加此物可解決todoList.forEach問題
         localStorage.setItem("todoList", stringified);
     }
@@ -141,6 +142,7 @@ function todoMain() {
         if (todoList == null) {
             todoList = [];
         }
+        //console.log(todoList);
     };
 
     function renderRows(arr) {
@@ -167,7 +169,6 @@ function todoMain() {
         let tdElem1 = document.createElement("td");
         tdElem1.appendChild(checkboxElem);
         trElem.appendChild(tdElem1);
-        trElem.dataset.id = id  // splice() => onDrop()
 
         //  date cell
         let dateElem = document.createElement("td");
@@ -273,13 +274,6 @@ function todoMain() {
             }
             save();
         }
-
-        // function toEditItem(event){
-        //     showEditModalBox();
-
-        //     let id = event.target.dataset.id;
-        //     let result = todoList.find(todoObj => todoObj.id == id);
-        //     // console.log(result);
     }
 
     function _uuid() {
@@ -337,6 +331,7 @@ function todoMain() {
     }
 
     function clearTable() {
+        //empty the table清空表格, keeping the first row保留地一行
         let trElems = document.getElementsByTagName("tr");
         for (let i = trElems.length - 1; i > 0; i--) {
             trElems[i].remove();
@@ -351,9 +346,12 @@ function todoMain() {
             // - Array filter() - 數組過濾器()
             let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
             renderRows(filteredIncompleteArray);
+            // filteredArray.forEach(renderRow);
             
             let filteredDoneArray = todoList.filter(obj => obj.done == true);
             renderRows(filteredDoneArray);
+            // filteredArray.forEach(renderRow);
+            //按一次會把刪除的排列至後方
         } else {
             renderRows(todoList);
         }
@@ -366,6 +364,7 @@ function todoMain() {
         let selection = selectElem.value;
 
         if (selection == DEFAULT_OPTION) {
+            // 
             if (shortlistBtn.checked) {
                 let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
                 renderRows(filteredIncompleteArray);
@@ -429,12 +428,15 @@ function todoMain() {
             let id = event.target.parentNode.dataset.id;
             let type = event.target.parentNode.dataset.type;
 
+            //enent.from calendar: Calendar::getEventById - 日曆::getEventById
             calendar.getEventById(id).remove();
 
             todoList.forEach(todoObj => {
                 if(todoObj.id == id){
+                    // todoObj.todo = changedValue;
                     todoObj[type] = changedValue;
 
+                    //新增事件: 編輯後，立即在日曆上更新狀態。
                     addEvent({
                         id: id,
                         title: todoObj.todo,
@@ -482,6 +484,8 @@ function todoMain() {
 
         document.getElementById("changeBtn").addEventListener("click", commitEdit, false);
 
+
+        //enent.from calendar: Calendar::getEventById - 日曆::getEventById
         calendar.getEventById(id).remove();
 
         for(let i = 0; i<todoList.length; i++){
@@ -505,6 +509,7 @@ function todoMain() {
         save();
 
         // let tdNodeList = todoTable.querySelectorAll("td");
+        // let tdNodeList = todoTable.querySelectorAll("td[data-id='" + id + "']");
         let tdNodeList = todoTable.querySelectorAll(`td[data-id='${id}']`);
         // console.log(tdNodeList)
 
@@ -525,14 +530,14 @@ function todoMain() {
                 case "category":
                     tdNodeList[i].innerText = category;
                     break;       
-                }
+            }
             // }
         }
     }
 
     function toEditItem(event){
         showEditModalBox();
-
+// 日歷裡面內容點選後可以編輯內容跳出視窗跟編輯道理一樣
         let id;
         if(event.target){ //mouse event
             id = event.target.dataset.id;
@@ -540,12 +545,13 @@ function todoMain() {
             id = event.id;
         }
 
-        // console.log(id);
+        console.log(id);
         preFillEditForm(id);
     }
 
     function preFillEditForm(id){
         let result = todoList.find(todoObj => todoObj.id == id);
+        // console.log(result);
 
         let {todo, category, date, time} = result;
         document.getElementById("todo-edit-todo").value = todo;
@@ -553,6 +559,7 @@ function todoMain() {
         document.getElementById("todo-edit-date").value = date;
         document.getElementById("todo-edit-time").value = time;
 
+        // document.getElementById("changeBtn").addEventListener("click", commitEdit, false);
         changeBtn.dataset.id = id;
     }
 
@@ -562,83 +569,24 @@ function todoMain() {
         draggingElement = event.target; //trElem
     }
 
-    
     function onDrop(event){
-        /*
-            Handing visual drag and drop of the rows
-        */
-        console.log(todoList);
-
-        // console.log(event.target);
-        if(event.target.matches("table")){
-            return;
-        }
-        // prevent when target is table
         // console.log("drop"); //抓到想要欄位，這邊會抓到代表成功但是還未讓欄位移位。
+        // console.log(event.target); 
         let beforeTarget = event.target;
+        if(event.target.matches("td")){
+            beforeTarget = event.target.parentNode;
+        console.log(beforeTarget); 
+        // beforeTarget.style.paddingTop = "10px";
+        todoTable.insertBefore(draggingElement, beforeTarget); //這邊正確移位欄位
 
-        // to look through parent until it is tr
-        while(!beforeTarget.matches("tr")){
-            beforeTarget = beforeTarget.parentNode;
         }
-
-        // to be implemented
-        // beforeTarget.style.paddingTop = "1rem";
-
-        // prevent when the tr is the first row
-        // console.log(beforeTarget);
-        if(beforeTarget.matches(":first-child")){
-            return; //解決此 /*todo19.js:574 Uncaught DOMException: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.at HTMLTableElement.onDrop*/
-        }
-
-        // visualize the drag and drop
-        todoTable.insertBefore(draggingElement, beforeTarget); //可以順利移位了
-        /* 
-            Handling the array   
-        */
-
-        let tempIndex;
-        console.log(todoList.length);
-
-        // find the index of one to be taken out
-        todoList.forEach((todoObj, index)=>{
-            if(todoObj.id == draggingElement.dataset.id){
-                tempIndex = index;
-            }
-        });
-        
-        // pop the element
-        let [toInsertObj] = todoList.splice(tempIndex, 1);
-        console.log(toInsertObj);
-
-        // find the index of one to be inserted before
-        todoList.forEach((todoObj, index)=>{
-            if(todoObj.id == beforeTarget.dataset.id){
-                tempIndex = index;
-            }
-        });
-
-        // insert the temp
-        todoList.splice(tempIndex, 0, toInsertObj);
-        console.log(todoList);
-
-        // update storage
-        save(); 
     }
 
     function onDragover(event){
         event.preventDefault();
         // console.log(event.target); 
     }
+
+    
+    
 }
-/*
-let arr = [ "dog", "apple", "banana", "cat"];
-arr.splice(1);
-let returned = arr.splice(1, 0, "grape", "pineapple");
-
-console.log(arr);
-console.log(returned);
-
-arr.slice(1, 0, returned[0]);
-console.log("結果: "+ arr);
-*/
