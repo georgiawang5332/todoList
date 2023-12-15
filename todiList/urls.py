@@ -39,6 +39,8 @@ urlpatterns = [
     path('Edit_Entries/', include('Edit_Entries.urls')),
     path('FullCalendar_eventClick/', include('FullCalendar_eventClick.urls')),
     path('Drag_to_Reorder/', include('Drag_to_Reorder.urls')),
+    path('Drag_Event_of_FullCale/', include('Drag_Event_of_FullCale.urls')),
+
 
 
 
