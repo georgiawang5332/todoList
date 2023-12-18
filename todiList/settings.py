@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'FullCalendar_eventClick',
     'Drag_to_Reorder',
     'Drag_Event_of_FullCale',
+    'Fixing_some_issues',
 ]
 
 MIDDLEWARE = [
