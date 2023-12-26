@@ -41,8 +41,15 @@ urlpatterns = [
     path('Drag_to_Reorder/', include('Drag_to_Reorder.urls')),
     path('Drag_Event_of_FullCale/', include('Drag_Event_of_FullCale.urls')),
     path('Fixing_some_issues/', include('Fixing_some_issues.urls')),
-    # path('Fixing_some_issues/', include('Fixing_some_issues.urls')),
-
+    path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
 
     path('admin/', admin.site.urls),
 ]

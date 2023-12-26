@@ -30,9 +30,24 @@ td {
   /* padding: 9.5px; */
 }
 
-#todoTable {
+.todoTable-block{
+
+}
+/* #todoTable { */
+#todoTable-block {
   width: 100%;
   /* margin-top: 1rem; */
+}
+.pagination-pages{
+  text-align: right;
+}
+.pagination-pages > *{
+  margin-right: .5rem;
+  cursor: pointer;
+}
+/* 編輯 刪除 */
+.material-icons{
+  cursor: pointer;
 }
 
 ::-ms-input-placeholder{
@@ -137,6 +152,17 @@ button:active{
 
 button:hover{
   background-color: #ffebe6 !important;
+}
+
+.chevron{
+  /* margin-top: 5rem; */
+  transform: translateY(.4rem);
+}
+
+.itemsPerPage{
+  /* text-emphasis: none; */
+  text-align: right;
+  margin-bottom: .5rem;
 }
 
 button#changeBtn, button#addBtn, button#sortBtn{

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'Drag_to_Reorder',
     'Drag_Event_of_FullCale',
     'Fixing_some_issues',
+    'Pagination_Array_slice',
 ]
 
 MIDDLEWARE = [
