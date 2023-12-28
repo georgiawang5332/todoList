@@ -31,7 +31,7 @@ td {
 }
 
 .todoTable-block{
-
+  margin-top: 1rem;
 }
 /* #todoTable { */
 #todoTable-block {
@@ -42,7 +42,7 @@ td {
   text-align: right;
 }
 .pagination-pages > *{
-  margin-right: .5rem;
+  margin-right: .5rem; 
   cursor: pointer;
 }
 /* 編輯 刪除 */

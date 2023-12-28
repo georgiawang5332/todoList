@@ -1,15 +1,14 @@
 <!--
-To-do List #22 Pagination with Array slice() - Learning vanilla JavaScript via mini-projects
-待辦事項清單 #22 使用陣列 slice() 進行分頁 - 透過迷你專案學習普通 JavaScript
+To-do List (Part 23) Event Time of FullCalendar
+待辦事項清單（第 23 部分） FullCalendar 的活動時間 
 
-To-do List (Part 22) Pagination with Array slice()
-待辦事項清單（第 22 部分）使用 Array slice() 進行分頁
-
-Learning Objectives: 
-- array.slice([start[, end]]) / - array.slice([開始[,結束]])
-- Math.ceil() /  - Math.ceil()
-- cursor: pointer  /  - 遊標：指針
-- Ternary operator: condition ? true : false / - 三元運算子：條件？ 真假
+Learning Objectives: 學習目標：
+- start: '2020-09-09T16:00:00' / - 開始：'2020-09-09T16:00:00'
+- start: `${date}T${time}`     / - 開始：`${日期}T${時間}`
+- eventTimeFormat: {},         / - 事件時間格式：{}，
+- omitZeroMinute: true         / - 省略零分鐘：true
+- meridiem: 'short'            / - 子午線：“短”
+- hour12: false                / - 12 小時：假
 -->
 
 <!doctype html>
@@ -171,4 +170,4 @@ Learning Objectives:
 <script src="{% static 'calender/main.min.js' %}" defer></script>
 
 <!-- 本地端 Javascript -->
-<script src="{% static 'js/todo22.js' %}" defer></script>
+<script src="{% static 'js/todo23.js' %}" defer></script>

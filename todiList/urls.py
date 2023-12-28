@@ -42,7 +42,7 @@ urlpatterns = [
     path('Drag_Event_of_FullCale/', include('Drag_Event_of_FullCale.urls')),
     path('Fixing_some_issues/', include('Fixing_some_issues.urls')),
     path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    path('Event_Time_FullCalendar/', include('Event_Time_FullCalendar.urls')),
     # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
     # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
     # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),

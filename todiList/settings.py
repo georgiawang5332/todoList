@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'Drag_Event_of_FullCale',
     'Fixing_some_issues',
     'Pagination_Array_slice',
+    'Event_Time_FullCalendar',
 ]
 
 MIDDLEWARE = [

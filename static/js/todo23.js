@@ -162,12 +162,14 @@ function todoMain() {
 
         currentPage = currentPage > totalPages ? totalPages : currentPage; 
 
-        arr.forEach(({id, todo, date}) => {
+        arr.forEach(({id, todo, date, time}) => {
             //新增事件
             addEvent({
                 id: id,
                 title: todo,
-                start: date,
+                // start: date,
+                start: `${date}T${time}`,
+
             });
         })
         let slicedArr = arr.slice(itemsPerPage * (currentPage - 1), 
@@ -355,6 +357,13 @@ function todoMain() {
                 // console.log(info);
                 calendarEventDragged(info.event);
             },
+            eventTimeFormat: {
+                hour: 'numeric',
+                minute: '2-digit',
+                omitZeroMinute: false,
+                hour12: false
+            },
+            
         });
 
         calendar.render();

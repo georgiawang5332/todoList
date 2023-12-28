@@ -15,11 +15,19 @@ function todoMain() {
         changeBtn,
         todoTable,
         draggingElement,
-        currentPage= 1,
-        itemsPerPage= Number.parseInt(localStorage.getItem("todo-itemsPerPage")) || 5,
-        totalPages = 0,
+        currentPage = 1,
+        itemsPerPage = Number.parseInt(localStorage.getItem("todo-itemsPerPage")) || 5,
+        totalPages = 1,
         itemsPerPageSelectElem;
 
+        /*
+        options to choose page
+        - dateset
+        - Math.ceil
+        - Material Icons
+        - ternary operator
+        - innerHTMML
+        */
     getElements();
     addListeners();
     initCalendar();
@@ -42,9 +50,8 @@ function todoMain() {
         // changeBtn.addEventListener("click", commitEdit, false);
         changeBtn = document.getElementById("changeBtn"); 
         todoTable = document.getElementById("todoTable");
-        // lesson 22
-        itemsPerPageSelectElem = document.getElementById("itemsPerPageSelectElem");
 
+        itemsPerPageSelectElem = document.getElementById("itemsPerPageSelectElem");
     }
 
     function addListeners() {
@@ -60,9 +67,9 @@ function todoMain() {
         todoTable.addEventListener("drop", onDrop, false);
         todoTable.addEventListener("dragover", onDragover, false);
 
+        // 22
         document.addEventListener("click", onDocumentClick, false);
         itemsPerPageSelectElem.addEventListener("change", selectItemsPerPage, false);
-
     }
 
     function addEntry(event) {
@@ -151,15 +158,22 @@ function todoMain() {
         if (todoList == null) {
             todoList = [];
         }
-
-        // lesson 22
+    // lesson 22
         itemsPerPageSelectElem.value = itemsPerPage;
     };
 
+    // 22. Display partial list
+    // - in renderRows()
+    // - not renderRow() on all
+    // - renderRow() on slice() result
+    /*
+        currentPage = 1,
+        itemsPerPage = 10;
+    */
+
     function renderRows(arr) {
-
         renderPageNumbers(arr);
-
+// 22 lesson
         currentPage = currentPage > totalPages ? totalPages : currentPage; 
 
         arr.forEach(({id, todo, date}) => {
@@ -170,7 +184,8 @@ function todoMain() {
                 start: date,
             });
         })
-        let slicedArr = arr.slice(itemsPerPage * (currentPage - 1), 
+
+        let slicedArr = arr.slice(itemsPerPage * (currentPage - 1),
         itemsPerPage * currentPage);
 
         slicedArr.forEach(todoObj => {
@@ -262,10 +277,10 @@ function todoMain() {
         // });
 
         // For edit on cell feature (lesson 17)
-        // dateElem.dataset.editable = true;
-        // timeElem.dataset.editable = true;
-        // tdElem2.dataset.editable  = true;
-        // tdElem3.dataset.editable  = true;
+        dateElem.dataset.editable = true;
+        timeElem.dataset.editable = true;
+        tdElem2.dataset.editable  = true;
+        tdElem3.dataset.editable  = true;
 
         dateElem.dataset.type = "date";
         // dateElem.dataset.value = date; //因為時間在html後台不會做更改
@@ -377,12 +392,17 @@ function todoMain() {
         clearTable();
 
         if (shortlistBtn.checked) {
+            let resultArray = [];
+
             // - Array filter() - 數組過濾器()
             let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
-            renderRows(filteredIncompleteArray);
+            // renderRows(filteredIncompleteArray);
             
             let filteredDoneArray = todoList.filter(obj => obj.done == true);
-            renderRows(filteredDoneArray);
+            // renderRows(filteredDoneArray);
+
+            resultArray = [...filteredIncompleteArray, ...filteredDoneArray];
+            renderRows(resultArray);
         } else {
             renderRows(todoList);
         }
@@ -392,6 +412,7 @@ function todoMain() {
     function multipleFilter(){
         clearTable();
         // shortlistBtn.checked
+
         let selection = selectElem.value;
 
         if (selection == DEFAULT_OPTION) {
@@ -406,9 +427,13 @@ function todoMain() {
             }
 
         } else {
+            // let resultArray = [];
+
             let filteredCategoryArray = todoList.filter(obj => obj.category == selection);
             
             if (shortlistBtn.checked) {
+                let resultArray = [];
+
                 let filteredIncompleteArray = filteredCategoryArray.filter(obj => obj.done == false);
                 renderRows(filteredIncompleteArray);
                 
@@ -588,7 +613,6 @@ function todoMain() {
         draggingElement = event.target; //trElem
     }
 
-    
     function onDrop(event){
         /*
             Handing visual drag and drop of the rows
@@ -693,28 +717,27 @@ function todoMain() {
 
         multipleFilter();
     }
-
+// 換頁程式部分
     function onDocumentClick(event){
-        console.log(event.target.dataset.pagination);
+        // console.log(event.target.dataset.pagination);
         switch(event.target.dataset.pagination){
             case "pageNumber" :
                 currentPage = Number(event.target.innerText);
                 break;
-            case "previousPage":
-                currentPage = currentPage == 1 ? currentPage : currentPage - 1;
-                break;
-
-            case "nextPage":
-                currentPage = currentPage == totalPages ? currentPage : currentPage + 1;
-                break;
-
-            case "firstPage":
+            case "previousPage" :
+                currentPage = currentPage == 1 ? currentPage:
+                currentPage - 1;
+                break;    
+            case "nextPage" :
+                currentPage = currentPage == totalPages ? currentPage : currentPage = 1;
+                currentPage + 1;
+                break;  
+            case "firstPage" :
                 currentPage = 1;
-                break;
-
-            case "lastPage":
+                break;  
+            case "lastPage" :
                 currentPage = totalPages;
-                break;
+                break;  
             default:
         }
         // console.log(currentPage);
@@ -723,21 +746,21 @@ function todoMain() {
 
     function renderPageNumbers(arr){
         let numberOfItems = arr.length;
-        totalPages = Math.ceil(numberOfItems / itemsPerPage);
-        // console.log(totalPages);
+        let totalPages = Math.ceil(numberOfItems / itemsPerPage);
 
         let pageNumberDiv = document.querySelector(".pagination-pages");
-        
+        // console.log(totalPages);
+
         pageNumberDiv.innerHTML = `<span class="material-icons chevron" data-pagination="firstPage">first_page</span>`;
+        // pageNumberDiv.innerHTML = `<span class="material-icons chevron" data-pagination="previousPage">keyboard_double_arrow_left</span>`;
 
         if(currentPage != 1){
-            pageNumberDiv.innerHTML = `<span class="material-icons chevron" data-pagination="previousPage">keyboard_double_arrow_left</span>`;
+            pageNumberDiv.innerHTML += `<span class="material-icons chevron" data-pagination="previousPage">keyboard_double_arrow_left</span>`;
         }
-
-        if(currentPage > 0){
-            for(let i = 1; i < totalPages; i++){
-                pageNumberDiv.innerHTML += `<span data-pagination="pageNumber">${i}</span>`;
-            }  
+        if(totalPages > 0){
+            for(let i = 1; i <= totalPages; i++){
+                pageNumberDiv.innerHTML += `<span data-pagination="pageNumber">${i}</span>`
+            }
         }
 
         if(currentPage != totalPages){
@@ -746,10 +769,16 @@ function todoMain() {
         }
     }
 
+    /*options to customize
+    - <select>
+    - on Change event,
+    - call multipleFilter()
+    */
+
     // PerPage
-    function selectItemsPerPage(event){
+    function selectItemsPerPage(){
         itemsPerPage = Number(event.target.value);
         localStorage.setItem("todo-itemsPerPage", itemsPerPage);
         multipleFilter();
-    } 
+    }
 }
