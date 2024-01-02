@@ -43,13 +43,11 @@ urlpatterns = [
     path('Fixing_some_issues/', include('Fixing_some_issues.urls')),
     path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
     path('Event_Time_FullCalendar/', include('Event_Time_FullCalendar.urls')),
+    path('Debugging/', include('Debugging.urls')),
     # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
     # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
     # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
+    
 
     path('admin/', admin.site.urls),
 ]

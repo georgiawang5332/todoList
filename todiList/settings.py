@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'Fixing_some_issues',
     'Pagination_Array_slice',
     'Event_Time_FullCalendar',
+    'Debugging',
 ]
 
 MIDDLEWARE = [
