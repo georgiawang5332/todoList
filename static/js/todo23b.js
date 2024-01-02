@@ -1,4 +1,4 @@
-todoMain()
+onload = todoMain;
 
 function todoMain() {
     const DEFAULT_OPTION = "選擇類別";

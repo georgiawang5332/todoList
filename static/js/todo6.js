@@ -2,10 +2,11 @@ onload = todoMain;
 
 function todoMain(){
     const DEFAULT_OPTION = "選擇類別";
+
     let inputElem,
         inputElem2,
         button,
-        ulElem,
+        // ulElem,
         selectElem;
 
     getElements();
@@ -15,7 +16,7 @@ function todoMain(){
         inputElem = document.getElementsByTagName("input")[0];
         inputElem2 = document.getElementsByTagName("input")[1];
         button = document.getElementById("addBtn");
-        ulElem = document.getElementsByTagName("ul")[0];
+        // ulElem = document.getElementsByTagName("ul")[0];
         selectElem = document.getElementById("categoryFilter");
     }
 
@@ -81,11 +82,10 @@ function todoMain(){
         let selection = selectElem.value;
         if(selection == DEFAULT_OPTION){
             let rows = document.getElementsByTagName("tr");
-            Array.from(rows).forEach((row)=>{
+            Array.from(rows).forEach((row, index)=>{
                 row.style.display = ""
             });
         }else{
-
             let rows = document.getElementsByTagName("tr");
             console.log(rows)
             Array.from(rows).forEach((row, index)=>{
@@ -102,7 +102,6 @@ function todoMain(){
                 }
             }); //數組.原型.對於每個 ()
         }
-
     }
 
     function updateSelectOptions(){
@@ -116,16 +115,16 @@ function todoMain(){
             let category = row.getElementsByTagName("td")[2].innerText;
             // if(!options.includes(category)){
             options.push(category);
-
             // }
-
         });
         console.log(options)
+
         let optionsSet = new Set(options);
         console.log(optionsSet);
 
-        //options the select  options
+        //empty the select options
         selectElem.innerText = "";
+
         //下拉式選項多一個空值""
         let newOptionElem = document.createElement('option');
         newOptionElem.value = DEFAULT_OPTION;
@@ -140,6 +139,5 @@ function todoMain(){
             selectElem.appendChild(newOptionElem);
         // });
         }
-
     }
 }
