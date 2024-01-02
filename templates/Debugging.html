@@ -18,8 +18,8 @@ Learning Objectives: 學習目標：
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>To-Do List</title>
     <meta name="description" content="Help Managing daily activities. Be organized.">
+    <title>To-Do List</title>
     <!-- 圖案套件 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -35,11 +35,6 @@ Learning Objectives: 學習目標：
     <!-- 本地端 css -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<style>
-    * {
-        /* outline: 1px solid red; */
-    }
-</style>
 
 <body>
     <h3 class="text-center p-4 pt-3">Georgia's To-Do List</h3>
@@ -81,8 +76,8 @@ Learning Objectives: 學習目標：
                             <option value="20">20</option>
                         </select>
                     </div>
-
-                    <table id="todoTable" class="todo-block">
+                    <div class="table-responsive-sm">
+                        <table id="todoTable" class="table table-hover table-success table-striped todo-block ">
                         <tr>
                             <td>checkbox</td>
                             <td>日期</td>
@@ -96,6 +91,7 @@ Learning Objectives: 學習目標：
                             <!-- <span class="material-symbols-outlined">delete</span> -->
                         </tr>
                     </table>
+                    </div>
                     <div class="pagination-pages">
 
                     </div>

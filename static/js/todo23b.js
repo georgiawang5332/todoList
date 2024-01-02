@@ -36,7 +36,7 @@ function todoMain() {
         timeInput = document.getElementById("timeInput");
         addButton = document.getElementById("addBtn");
         sortButton = document.getElementById("sortBtn");
-        ulElem = document.getElementsByTagName("ul")[0];
+        // ulElem = document.getElementsByTagName("ul")[0];
         selectElem = document.getElementById("categoryFilter");
         shortlistBtn = document.getElementById("shortlistBtn");
         // console.log(shortlistBtn);
@@ -47,7 +47,6 @@ function todoMain() {
         // lesson 22
         itemsPerPageSelectElem = document.getElementById("itemsPerPageSelectElem");
         paginationCtnr = document.querySelector(".pagination-pages");
-
         todoModalCloseBtn = document.getElementById("todo-modal-close-btn");
     }
 
@@ -56,6 +55,7 @@ function todoMain() {
         sortButton.addEventListener("click", sortEntry, false);
         selectElem.addEventListener("change", multipleFilter, false);
         shortlistBtn.addEventListener("change", multipleFilter, false);
+
         todoModalCloseBtn.addEventListener("click", closeEditModalBox, false);
 
         changeBtn.addEventListener("click", commitEdit, false);
@@ -68,8 +68,6 @@ function todoMain() {
         paginationCtnr.addEventListener("click", onPaginationBtnsClick, false);
 
         itemsPerPageSelectElem.addEventListener("change", selectItemsPerPage, false);
-
-
     }
 
     function addEntry(event) {
@@ -122,28 +120,28 @@ function todoMain() {
         // timeInput.value = "";
     }
 
-    function filterEntries() {
-        let selection = selectElem.value;
+    // function filterEntries() {
+    //     let selection = selectElem.value;
 
-        clearTable();
+    //     clearTable();
 
-        if (selection == DEFAULT_OPTION) {
-            todoList.forEach(obj => renderRow(obj));
-        } else {
-            todoList.forEach(obj => {
-                if (obj.category == selection) {
-                    renderRow(obj);
-                }
-            });
-        }
-    }
+    //     if (selection == DEFAULT_OPTION) {
+    //         todoList.forEach(obj => renderRow(obj));
+    //     } else {
+    //         todoList.forEach(obj => {
+    //             if (obj.category == selection) {
+    //                 renderRow(obj);
+    //             }
+    //         });
+    //     }
+    // }
 
     function updateSelectOptions() {
         let options = [];
         //13.這邊取代category 部分不用寫那摩多編碼
         todoList.forEach((obj) => {
             options.push(obj.category);
-        })
+        });
 
         let optionsSet = new Set(options);
         //options the select  options
@@ -180,7 +178,6 @@ function todoMain() {
     };
 
     function renderRows(arr) {
-
         renderPageNumbers(arr);
         currentPage = currentPage > totalPages ? totalPages : currentPage; 
         arr.forEach(addEvent);
@@ -212,8 +209,7 @@ function todoMain() {
             // }
         // })
 
-        let slicedArr = arr.slice(itemsPerPage * (currentPage - 1), 
-        itemsPerPage * currentPage);
+        let slicedArr = arr.slice(itemsPerPage * (currentPage - 1), itemsPerPage * currentPage);
 
         slicedArr.forEach(todoObj => {
             renderRow(todoObj);// 正確的呼叫方式
@@ -332,8 +328,7 @@ function todoMain() {
             let calendarEvent = calendar.getEventById(this.dataset.id);
             if(calendarEvent !== null){
                 calendarEvent.remove();
-            }
-            
+            }  
         }
 
         function checkboxClickCallback() {
@@ -376,10 +371,11 @@ function todoMain() {
         var calendarEl = document.getElementById('calendar');
 
         calendar = new FullCalendar.Calendar(calendarEl, {
-            initialDate: new Date(), // 當前月份
             locale: 'zh-tw',
-            initialView: 'dayGridMonth',
             navLinks: true,
+
+            initialView: 'dayGridMonth',
+            initialDate: new Date(), // 當前月份
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -392,9 +388,9 @@ function todoMain() {
             },
             eventBackgroundColor:"#ffebe6",
             eventBorderColor: "#ffebe6",
-            eventTextColor: "#598047",
             // 拖曳日曆上時間
             editable:true,
+            eventTextColor: "#598047",
             eventDrop:function(info) {
                 // console.log(info);
                 calendarEventDragged(info.event);
@@ -416,7 +412,7 @@ function todoMain() {
         calendar.addEvent({
             id: id,
             title: todo,
-            start: time === "" ? date: `${date}T${time}`,
+            start: time === "" ? date : `${date}T${time}`,
             // start: date,
             // start: time ? date: `${date}T${time}` : date,
             backgroundColor: (done ? "yellow" : "#a19f12"),
@@ -432,74 +428,118 @@ function todoMain() {
         calendar.getEvents().forEach(event => event.remove());
     }
 
-    function onShortListChange() {
-        clearTable();
+    // function onShortListChange() {
+    //     clearTable();
 
-        if (shortlistBtn.checked) {
-            // - Array filter() - 數組過濾器()
-            let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
-            renderRows(filteredIncompleteArray);
+    //     if (shortlistBtn.checked) {
+    //         // - Array filter() - 數組過濾器()
+    //         let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
+    //         renderRows(filteredIncompleteArray);
             
-            let filteredDoneArray = todoList.filter(obj => obj.done == true);
-            renderRows(filteredDoneArray);
-        } else {
-            renderRows(todoList);
-        }
+    //         let filteredDoneArray = todoList.filter(obj => obj.done == true);
+    //         renderRows(filteredDoneArray);
+    //     } else {
+    //         renderRows(todoList);
+    //     }
 
-    }
+    // }
 
-    function multipleFilter(){
+    // function multipleFilter(){
+    //     clearTable();
+    //     // shortlistBtn.checked
+    //     let selection = selectElem.value;
+
+    //     if (selection == DEFAULT_OPTION) {
+    //         if (shortlistBtn.checked) {
+    //             let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
+    //             renderRows(filteredIncompleteArray);
+                
+    //             let filteredDoneArray = todoList.filter(obj => obj.done == true);
+    //             renderRows(filteredDoneArray);
+    //         } else {
+    //             renderRows(todoList);
+    //         }
+
+    //     } else {
+    //         let filteredCategoryArray = todoList.filter(obj => obj.category == selection);
+            
+    //         if (shortlistBtn.checked) {
+    //             let filteredIncompleteArray = filteredCategoryArray.filter(obj => obj.done == false);
+    //             renderRows(filteredIncompleteArray);
+                
+    //             let filteredDoneArray = filteredCategoryArray.filter(obj => obj.done == true);
+    //             renderRows(filteredDoneArray);
+    //         } else {
+    //             renderRows(filteredCategoryArray);
+    //         }  
+    //     }
+    // }
+    function multipleFilter() {
         clearTable();
-        // shortlistBtn.checked
+    
         let selection = selectElem.value;
-
+    
         if (selection == DEFAULT_OPTION) {
-            if (shortlistBtn.checked) {
-                let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
-                renderRows(filteredIncompleteArray);
-                
-                let filteredDoneArray = todoList.filter(obj => obj.done == true);
-                renderRows(filteredDoneArray);
-            } else {
-                renderRows(todoList);
-            }
-
+    
+          if (shortlistBtn.checked) {
+            let resultArray = [];
+    
+            let filteredIncompleteArray = todoList.filter(obj => obj.done == false);
+            //renderRows(filteredIncompleteArray);
+    
+            let filteredDoneArray = todoList.filter(obj => obj.done == true);
+            //renderRows(filteredDoneArray);
+    
+            resultArray = [...filteredIncompleteArray, ...filteredDoneArray];
+            renderRows(resultArray);
+          } else {
+            renderRows(todoList);
+          }
+    
         } else {
-            let filteredCategoryArray = todoList.filter(obj => obj.category == selection);
-            
-            if (shortlistBtn.checked) {
-                let filteredIncompleteArray = filteredCategoryArray.filter(obj => obj.done == false);
-                renderRows(filteredIncompleteArray);
-                
-                let filteredDoneArray = filteredCategoryArray.filter(obj => obj.done == true);
-                renderRows(filteredDoneArray);
-            } else {
-                renderRows(filteredCategoryArray);
-            }  
+    
+          let filteredCategoryArray = todoList.filter(obj => obj.category == selection);
+    
+          if (shortlistBtn.checked) {
+            let resultArray = [];
+    
+            let filteredIncompleteArray = filteredCategoryArray.filter(obj => obj.done == false);
+            //renderRows(filteredIncompleteArray);
+    
+            let filteredDoneArray = filteredCategoryArray.filter(obj => obj.done == true);
+            //renderRows(filteredDoneArray);
+    
+            resultArray = [...filteredIncompleteArray, ...filteredDoneArray];
+            renderRows(resultArray);
+          } else {
+            renderRows(filteredCategoryArray);
+          }
+    
         }
-    }
-
+        
+      } 
+ 
     function onTableClicked(event){
-        console.log(event.target); //秀出html
+        // console.log(event.target); //秀出html
         if(event.target.matches("td") && event.target.dataset.editable == "true"){
-            console.log(event.target); 
+            // console.log(event.target); 
             let tempInputElem;
             switch(event.target.dataset.type){
                 case "date":
-                    console.log("date////");
+                    // console.log("date////");
                     tempInputElem = document.createElement("input");
                     tempInputElem.type = "date";
-                    tempInputElem.value = event.target.innerText;
+                    tempInputElem.value = event.target.dataset.value;
                     break;
                 case "time":
-                    console.log("time////");
+                    // console.log("time////");
                     tempInputElem = document.createElement("input");
                     tempInputElem.type = "time";
                     tempInputElem.value = event.target.innerText;
                     break;
                 case "todo":
                 case "category":
-                    console.log("todo////");
+                    // console.log("todo////");
                     tempInputElem = document.createElement("input");
                     tempInputElem.value = event.target.innerText;// 編輯時候會出現undefined ; innerText可以修改問題。
                     break;
@@ -591,10 +631,13 @@ function todoMain() {
         // console.log(todoList);
         save();
 
+        //let tdNodeList = todoTable.querySelectorAll("td");
+        //let tdNodeList = todoTable.querySelectorAll("td[data-id='" + id + "']");
         let tdNodeList = todoTable.querySelectorAll(`td[data-id='${id}']`);
         // console.log(tdNodeList)
 
         for(let i = 0; i < tdNodeList.length; i++){
+            //if(tdNodeList[i].dataset.id == id){
             let type = tdNodeList[i].dataset.type;
             switch(type){
                 case "date":
@@ -610,7 +653,7 @@ function todoMain() {
                     tdNodeList[i].innerText = category;
                     break;       
             }
-
+            //}
         }
     }
 
@@ -630,8 +673,8 @@ function todoMain() {
 
     function preFillEditForm(id){
         let result = todoList.find(todoObj => todoObj.id == id);
-
         let {todo, category, date, time} = result;
+
         document.getElementById("todo-edit-todo").value = todo;
         document.getElementById("todo-edit-category").value = category;
         document.getElementById("todo-edit-date").value = date;
@@ -643,7 +686,6 @@ function todoMain() {
     function onDragstart(event){
         draggingElement = event.target; //trElem
     }
-
     
     function onDrop(event){
         /*
@@ -678,7 +720,6 @@ function todoMain() {
         /* 
             Handling the array   
         */
-
         let tempIndex;
         console.log(todoList.length);
 
@@ -732,7 +773,6 @@ function todoMain() {
         let date = (dateObj.getDate());
         let hour = (dateObj.getHours());
         let minute = (dateObj.getMinutes());
-
         // console.log(`time:${time}:${hour}:${minute}`);
 
         let paddedMonth = month.toString();
@@ -751,7 +791,8 @@ function todoMain() {
             if(todoObj.id == id){
                 todoObj.date = toStoreDate;
                 if(hour !== 0){
-                    todoObj.time = `${hour}:${minute}`;
+                    // todoObj.time = `${hour}:${minute}`;
+                    todoObj.time = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
                 }
             }
         });
@@ -767,6 +808,7 @@ function todoMain() {
             case "pageNumber" :
                 currentPage = Number(event.target.innerText);
                 break;
+
             case "previousPage":
                 currentPage = currentPage == 1 ? currentPage : currentPage - 1;
                 break;
@@ -794,15 +836,15 @@ function todoMain() {
         // console.log(totalPages);
 
         let pageNumberDiv = document.querySelector(".pagination-pages");
-        
         pageNumberDiv.innerHTML = `<span class="material-icons chevron" data-pagination="firstPage">first_page</span>`;
 
         if(currentPage != 1){
-            pageNumberDiv.innerHTML = `<span class="material-icons chevron" data-pagination="previousPage">keyboard_double_arrow_left</span>`;
+            pageNumberDiv.innerHTML += `<span class="material-icons chevron" data-pagination="previousPage">keyboard_double_arrow_left</span>`;
+            // pageNumberDiv.innerHTML += `<span class="material-icons chevron" data-pagination="previousPage">keyboard_double_arrow_left</span>`;
         }
 
-        if(currentPage > 0){
-            for(let i = 1; i < totalPages; i++){
+        if(totalPages > 0){
+            for(let i = 1; i <= totalPages; i++){
                 pageNumberDiv.innerHTML += `<span data-pagination="pageNumber">${i}</span>`;
             }  
         }

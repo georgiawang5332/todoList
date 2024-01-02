@@ -2,6 +2,7 @@ todoMain()
 
 function todoMain() {
     const DEFAULT_OPTION = "選擇類別";
+    
     let inputElem,
         inputElem2,
         dateInput,
