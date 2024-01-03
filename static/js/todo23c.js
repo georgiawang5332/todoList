@@ -784,15 +784,15 @@ function todoMain() {
             paddedDate = "0" + paddedDate;
         }
         let toStoreDate = `${year}-${paddedMonth}-${paddedDate}`;
-        // console.log(toStoreDate);
+        console.log(toStoreDate);
 
         //拖曳日期上時間，更改正確時間上。
         todoList.forEach(todoObj => {
             if (todoObj.id == id) {
                 todoObj.date = toStoreDate;
                 if (hour !== 0) {
-                    todoObj.time = `${hour}:${minute}`;
-                    // todoObj.time = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
+                    // todoObj.time = `${hour}:${minute}`;
+                    todoObj.time = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
                 }
             }
         });
@@ -862,4 +862,4 @@ function todoMain() {
         multipleFilter();
     }
 }
-// test
+// padStart()首先用給定用於填充的字串，以重複的方式，插入到目標字串的起始頭（左側），直到目標字串到達指定長度。

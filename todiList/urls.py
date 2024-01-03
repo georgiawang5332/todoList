@@ -44,10 +44,8 @@ urlpatterns = [
     path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
     path('Event_Time_FullCalendar/', include('Event_Time_FullCalendar.urls')),
     path('Debugging/', include('Debugging.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    # path('Pagination_Array_slice/', include('Pagination_Array_slice.urls')),
-    
+    path('padStart/', include('padStart.urls')),
+
 
     path('admin/', admin.site.urls),
 ]
