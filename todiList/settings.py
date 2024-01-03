@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'Pagination_Array_slice',
     'Event_Time_FullCalendar',
     'Debugging',
+    'padStart',
 ]
 
 MIDDLEWARE = [
